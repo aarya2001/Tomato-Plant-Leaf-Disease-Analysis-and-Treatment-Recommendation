@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block pagetitle %}
+Supplement Market
+{% endblock pagetitle %}
+
+{% block body %}
+
+<!-- Dropdown menu for filtering -->
+<div class="row mb-3">
+    <div class="col-lg-6 mx-auto">
+        <select id="filter" class="form-select">
+            <option value="all">All Supplements</option>
+            <option value="healthy">Healthy Supplements</option>
+            <option value="diseased">Diseased Supplements</option>
+        </select>
+    </div>
+</div>
+
+<div class="row mb-5 text-center text-white">
+    <div class="col-lg-10 mx-auto">
+        <h1 class="display-4" style="padding-top: 2%;font-weight: 400;color: rgb(4, 54, 4);"><b>🛒Supplements🛒</b></h1>
+        <p class="lead" style="font-weight: 500;color: black;">Buy Supplements & Fertilizer at one place</p>
+    </div>
+</div>
+
+<div class="row p-3" id="supplements">
+    {% for index in range(0,supplement_name | length) %}
+    <div class="col">
+        <div class=" p-5 bg-white shadow rounded-lg" style="height: 95%;">
+            <center>
+                {% if index==9 %}
+                <h5>Fertilizer<b style="color: green;"> (Healthy):</b></h5>
+                {% else %}
+                <h5>Supplements<b style="color: red;"> (Diseased):</b></h5>
+                {% endif %}
+                <br>
+                <img src={{supplement_image[index]}} width="200" height="250">
+                <br>
+                <br>
+                <h6>For {{disease[index]}}</h6>
+                <p>{{supplement_name[index]}}</p>
+
+                <a target="_blank" href={{buy[index]}}><button type="button" class="btn btn-success"
+                        style="background-color: #05380b;">Buy Product</button></a>
+            </center>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+    document.getElementById("filter").addEventListener("change", function () {
+        var filter = this.value;
+        var supplements = document.getElementById("supplements").children;
+        for (var i = 0; i < supplements.length; i++) {
+            if (filter === "all") {
+                supplements[i].style.display = "block";
+            } else if (filter === "healthy" && (i == 9)) {
+                supplements[i].style.display = "block";
+            } else if (filter === "diseased" && (i != 9)) {
+                supplements[i].style.display = "block";
+            } else {
+                supplements[i].style.display = "none";
+            }
+        }
+    });
+</script>
+
+{% endblock body %}
+
+
+<!-- index==0 or index==2 or 
+i == 0 || i == 2 || 
+i != 0 && i != 2 &&
+-->
