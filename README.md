@@ -1,0 +1,2 @@
+# Tomato-Plant-Leaf-Disease-Analysis-and-Treatment-Recommendation
+The system uses CNNs for tomato leaf disease detection, offering tailored treatment recommendations. It includes data preprocessing, disease identification (e.g., early blight, late blight), and a user-friendly interface for farmers. The solution enhances accuracy, reduces manual inspections, promotes sustainability, and boosts profitability.
